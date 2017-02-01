@@ -8,6 +8,6 @@ defmodule InetsServerModuleTest do
       |> to_charlist()
       |> :httpc.request()
 
-    assert { :ok, {{ _, 200, _ }, _, 'document root\n' }} = response
+    assert { :ok, {{ _, 200, _ }, _, 'document: /index.html' }} = response
   end
 end

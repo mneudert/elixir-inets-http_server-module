@@ -1,8 +1,12 @@
 defmodule InetsServerModule do
   @moduledoc false
 
-  def serve(_mod_data) do
-    body = 'document root\n'
+  require Record
+
+  Record.defrecord :mod, Record.extract(:mod, from_lib: "inets/include/httpd.hrl")
+
+  def serve(mod_data) do
+    body = 'document: ' ++ mod(mod_data, :request_uri)
     head = [
       code:           200,
       content_length: body |> length() |> to_charlist(),

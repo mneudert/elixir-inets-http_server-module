@@ -1,6 +1,7 @@
 root          = Path.join([ __DIR__, "document_root" ]) |> to_char_list()
 httpd_config  = [
   document_root: root,
+  modules:       [:elixir_inets_proxy],
   port:          0,
   server_name:   'elixir_httpd_module_test',
   server_root:   root
